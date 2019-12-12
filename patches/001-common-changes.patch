@@ -24,7 +24,7 @@ index 0000000..2865932
 +EXTRA_DIST = README
 diff --git a/doc/Makefile.am b/doc/Makefile.am
 new file mode 100644
-index 0000000..a73d530
+index 0000000..a6029df
 --- /dev/null
 +++ b/doc/Makefile.am
 @@ -0,0 +1,7 @@
@@ -33,7 +33,7 @@ index 0000000..a73d530
 +
 +# LUA-AT: Change list of files
 +EXTRA_DIST = \
-+	contents.html logo.gif lua.1 luac.1 luac.html lua.css lua.html Makefile.am manual.html readme.html
++	contents.html cover.png logo.gif lua.1 luac.1 luac.html lua.css lua.html manual.css manual.html readme.html
 +
 diff --git a/src/Makefile.am b/src/Makefile.am
 new file mode 100644

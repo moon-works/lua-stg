@@ -12,13 +12,13 @@ Review all LUA-AT sections and rename .pc file if needed
 
 diff --git a/configure.ac b/configure.ac
 new file mode 100644
-index 0000000..44af5a4
+index 0000000..af50edd
 --- /dev/null
 +++ b/configure.ac
 @@ -0,0 +1,89 @@
 +AC_PREREQ(2.59)
 +# LUA-AT: Change version and MAJOR_VERSION
-+AC_INIT([lua], [5.1], [https://bugs.gentoo.org/], [], [http://www.lua.org])
++AC_INIT([lua], [5.1.5], [https://bugs.gentoo.org/], [], [http://www.lua.org])
 +AC_SUBST([MAJOR_VERSION], [5.1])
 +
 +AC_CONFIG_MACRO_DIRS([m4])
