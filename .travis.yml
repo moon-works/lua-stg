@@ -13,6 +13,6 @@ compiler:
 
 script:
   - quilt push -a
-  - autoreconf --install && ./configure --with-readline
+  - autoreconf --install && ./configure --with-readline --with-compat-module
   - make
 
