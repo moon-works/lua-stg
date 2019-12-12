@@ -1,0 +1,18 @@
+language: c
+
+os: linux
+dist: bionic
+addons:
+  apt:
+    packages:
+      - quilt libreadline-dev
+
+compiler:
+  - clang
+  - gcc
+
+script:
+  - quilt push -a
+  - autoreconf --install && ./configure --with-readline
+  - make
+
