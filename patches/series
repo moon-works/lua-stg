@@ -1,0 +1,4 @@
+# This series applies on GIT commit 8a281d58cacecd0a60f8072b0279660c8512d9f4
+001-common-changes.patch
+002-luaconf.h.template.in.patch
+003-configure.ac.patch

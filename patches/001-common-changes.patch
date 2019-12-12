@@ -1,0 +1,97 @@
+Common files for LUA-AT
+
+From: Azamat H. Hackimov <azamat.hackimov@gmail.com>
+
+
+---
+ Makefile.am     |    4 ++++
+ doc/Makefile.am |    7 +++++++
+ src/Makefile.am |   54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 65 insertions(+)
+ create mode 100644 Makefile.am
+ create mode 100644 doc/Makefile.am
+ create mode 100644 src/Makefile.am
+
+diff --git a/Makefile.am b/Makefile.am
+new file mode 100644
+index 0000000..2865932
+--- /dev/null
++++ b/Makefile.am
+@@ -0,0 +1,4 @@
++ACLOCAL_AMFLAGS = -I m4
++SUBDIRS = src doc
++
++EXTRA_DIST = README
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+new file mode 100644
+index 0000000..a73d530
+--- /dev/null
++++ b/doc/Makefile.am
+@@ -0,0 +1,7 @@
++# LUA-AT: Change list of files
++man1_MANS = lua.1 luac.1
++
++# LUA-AT: Change list of files
++EXTRA_DIST = \
++	contents.html logo.gif lua.1 luac.1 luac.html lua.css lua.html Makefile.am manual.html readme.html
++
+diff --git a/src/Makefile.am b/src/Makefile.am
+new file mode 100644
+index 0000000..27742fc
+--- /dev/null
++++ b/src/Makefile.am
+@@ -0,0 +1,54 @@
++AM_CFLAGS = -Wall
++
++include_HEADERS = lua.h lualib.h lauxlib.h
++
++nodist_include_HEADERS = luaconf.h
++
++pkglib_LTLIBRARIES = liblua-@MAJOR_VERSION@.la
++
++# LUA-AT: Change list of sources on new release (exclude lua.c and luac.c
++SOURCES = \
++	lapi.c lapi.h lauxlib.c lauxlib.h lbaselib.c lcode.c lcode.h ldblib.c \
++	ldebug.c ldebug.h ldo.c ldo.h ldump.c lfunc.c lfunc.h lgc.c lgc.h \
++	linit.c liolib.c llex.c llex.h llimits.h lmathlib.c lmem.c lmem.h \
++	loadlib.c lobject.c lobject.h lopcodes.c lopcodes.h loslib.c \
++	lparser.c lparser.h lstate.c lstate.h lstring.c lstring.h lstrlib.c \
++	ltable.c ltable.h ltablib.c ltm.c ltm.h luaconf.h lua.h lualib.h \
++	lundump.c lundump.h lvm.c lvm.h lzio.c lzio.h print.c
++
++liblua_@MAJOR_VERSION@_la_SOURCES = ${SOURCES}
++
++# Static library for intrenal linking with luac
++noinst_LTLIBRARIES = libluac.la
++libluac_la_SOURCES = ${SOURCES}
++prog_CFLAGS = $(AM_CFLAGS)
++
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = lua@MAJOR_VERSION@.pc
++
++bin_PROGRAMS = lua luac
++
++lua_SOURCES = lua.c
++lua_LDADD = liblua-@MAJOR_VERSION@.la @LUA_LIBS@ @READLINE_LIBS@
++lua_DEPENDENCIES = liblua-@MAJOR_VERSION@.la
++
++luac_SOURCES = luac.c
++luac_LDADD = .libs/libluac.a @LUA_LIBS@
++luac_DEPENDENCIES = libluac.la
++
++EXTRA_DIST = luaconf.h.template
++BUILT_SOURCES = luaconf.h
++CLEANFILES = luaconf.h luaconf.h.template
++
++readline_defs = @READLINE_DEFS@
++
++edit = 	sed \
++	  -e 's,%prefix%,$(prefix),g' \
++	  -e 's,@datadir[@],$(pkgdatadir),g' \
++	  -e 's,%lua_libdir%,$(libdir),g'
++
++luaconf.h : luaconf.h.template
++	rm -f $@ $@.tmp
++	$(edit) $< >$@.tmp
++	mv $@.tmp $@
++
