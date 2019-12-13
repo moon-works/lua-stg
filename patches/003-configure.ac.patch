@@ -12,7 +12,7 @@ Review all LUA-AT sections and rename .pc file if needed
 
 diff --git a/configure.ac b/configure.ac
 new file mode 100644
-index 0000000..bbed199
+index 0000000..3c696d1
 --- /dev/null
 +++ b/configure.ac
 @@ -0,0 +1,90 @@
@@ -40,7 +40,7 @@ index 0000000..bbed199
 +COMPAT_DEFS="#undef LUA_COMPAT_ALL"
 +if test "x$use_compat_module" == "xyes"; then
 +  COMPAT_DEFS="#define LUA_COMPAT_5_1
-+define LUA_COMPAT_5_2"
++#define LUA_COMPAT_5_2"
 +fi
 +AC_SUBST(COMPAT_DEFS)
 +
