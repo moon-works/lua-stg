@@ -5,8 +5,8 @@ From: Azamat H. Hackimov <azamat.hackimov@gmail.com>
 Review all LUA-AT sections and rename .pc file if needed
 ---
  configure.ac     |   89 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
- src/lua5.1.pc.in |   13 ++++++++
- 2 files changed, 102 insertions(+)
+ src/lua5.1.pc.in |   18 +++++++++++
+ 2 files changed, 107 insertions(+)
  create mode 100644 configure.ac
  create mode 100644 src/lua5.1.pc.in
 
@@ -107,16 +107,21 @@ index 0000000..af50edd
 +AC_OUTPUT
 diff --git a/src/lua5.1.pc.in b/src/lua5.1.pc.in
 new file mode 100644
-index 0000000..05e45fe
+index 0000000..ed4c42a
 --- /dev/null
 +++ b/src/lua5.1.pc.in
-@@ -0,0 +1,13 @@
+@@ -0,0 +1,18 @@
 +V= @MAJOR_VERSION@
 +R= @VERSION@
 +prefix= @prefix@
 +exec_prefix=${prefix}
 +libdir= @libdir@
 +includedir=@includedir@
++
++# Install paths for Lua modules. Example:
++# "pkg-config --variable=INSTALL_LMOD".
++INSTALL_LMOD=${prefix}/share/lua/${V}
++INSTALL_CMOD=${libdir}/lua/${V}
 +
 +Name: Lua @MAJOR_VERSION@
 +Description: An Extensible Extension Language

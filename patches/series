@@ -1,4 +1,4 @@
-# This series applies on GIT commit 8e6a9c8a0ea498e8fbb006466a3374f2089660fc
+# This series applies on GIT commit 4dd6507f577164a8cd12620cce435925027f1790
 001-common-changes.patch
 002-luaconf.h.template.in.patch
 003-configure.ac.patch
