@@ -37,7 +37,7 @@ index 0000000..a6029df
 +
 diff --git a/src/Makefile.am b/src/Makefile.am
 new file mode 100644
-index 0000000..052ec29
+index 0000000..92dcefa
 --- /dev/null
 +++ b/src/Makefile.am
 @@ -0,0 +1,55 @@
@@ -47,7 +47,7 @@ index 0000000..052ec29
 +
 +nodist_include_HEADERS = luaconf.h
 +
-+pkglib_LTLIBRARIES = liblua-@MAJOR_VERSION@.la
++lib_LTLIBRARIES = liblua-@MAJOR_VERSION@.la
 +
 +# LUA-AT: Change list of sources on new release (exclude lua.c and luac.c
 +SOURCES = \
