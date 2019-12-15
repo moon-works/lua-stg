@@ -36,7 +36,7 @@ index 0000000..93df112
 +	contents.html index.css logo.gif lua.1 luac.1 lua.css manual.css manual.html osi-certified-72x60.png readme.html
 diff --git a/src/Makefile.am b/src/Makefile.am
 new file mode 100644
-index 0000000..520cec8
+index 0000000..36d52ed
 --- /dev/null
 +++ b/src/Makefile.am
 @@ -0,0 +1,55 @@
@@ -46,7 +46,7 @@ index 0000000..520cec8
 +
 +nodist_include_HEADERS = luaconf.h
 +
-+pkglib_LTLIBRARIES = liblua-@MAJOR_VERSION@.la
++lib_LTLIBRARIES = liblua-@MAJOR_VERSION@.la
 +
 +# LUA-AT: Change list of sources on new release (exclude lua.c and luac.c
 +SOURCES = \
